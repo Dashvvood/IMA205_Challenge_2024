@@ -11,7 +11,7 @@ class BaseDatasetMixin:
         img_root: Union[str, os.PathLike]
     ) -> None:
         if not os.path.exists(img_root):
-            raise FileNotFoundError, f"{img_root} not found"
+            raise FileNotFoundError(f"{img_root} not found")
         
         self.metadada = metadata
         
