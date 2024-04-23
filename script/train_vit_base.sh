@@ -1,5 +1,5 @@
 #!/bin/bash
-python ../trainer/vit_base_trainer.py \
+python ../src/trainer/vit_base_trainer.py \
 --batch_size 16 \
 --device_num 1 \
 --processor_config ../config/vit_image_processor.json \
