@@ -1,13 +1,15 @@
 import sys
 import os
+import motti
 
-parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(parent_dir)
+motti.append_parent_dir()
+
 
 from constant import PROJECT_ROOT
 
 from args import opts
-import motti
+
+from motti import load_json
 import json
 import logging
 

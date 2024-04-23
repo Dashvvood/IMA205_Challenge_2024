@@ -1,9 +1,8 @@
 import sys
 import os
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
-sys.path.append(current_dir)
-sys.path.append(parent_dir)
+import motti
+motti.append_current_dir()
+motti.append_parent_dir()
 
 from os import PathLike
 import torch
@@ -11,7 +10,6 @@ from torch.utils.data import Dataset, DataLoader
 from common import BaseDatasetMixin
 from typing import Any
 from dataclasses import dataclass
-
 
 @dataclass
 class ISIC2019Item:

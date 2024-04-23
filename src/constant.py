@@ -1,8 +1,7 @@
 import os
 import sys
-
-current_dir = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(current_dir)
+import motti
+motti.append_current_dir()
 
 from collections import OrderedDict
 INDEX2LABEL= OrderedDict({
