@@ -172,3 +172,6 @@ cache
 
 log
 log/*
+
+ckpt/*
+ckpt

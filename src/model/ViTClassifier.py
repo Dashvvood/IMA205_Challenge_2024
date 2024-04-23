@@ -19,7 +19,7 @@ class LitViTClassifier(L.LightningModule):
         x,y = batch.pixel_values, batch.labels
         out = self(x)
         loss = self.criterion(out.logits, y)
-        self.log("train/loss", loss, on_epoch=True)
+        self.log("train_loss", loss, on_epoch=True)
         return loss
     
     def validation_step(self, batch, batch_idx):
@@ -31,5 +31,5 @@ class LitViTClassifier(L.LightningModule):
         labels_hat = torch.argmax(out.logits, dim=1)
         val_acc = torch.sum(y == labels_hat).item() / (len(y) * 1.0)
 
-        self.log_dict({'val/loss': loss, 'val/acc': val_acc}, on_epoch=True)
+        self.log_dict({'val_loss': loss, 'val_accuracy': val_acc}, on_epoch=True)
         

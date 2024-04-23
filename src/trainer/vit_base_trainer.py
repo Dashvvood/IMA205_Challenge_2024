@@ -8,6 +8,7 @@ from ..args import opts
 import motti
 import json
 import logging
+import os
 
 import torch
 from torch.utils.data import DataLoader
@@ -51,19 +52,22 @@ wandblogger = WandbLogger(
 )
 
 checkpoint_callback = ModelCheckpoint(
-    monitor="val_loss", 
+    monitor="val_accuracy", 
     dirpath=opts.ckpt_dir,
     save_last=True,
     save_top_k=1,
-    monitor="val/loss",
+    mode="max",
 )
 
 model = LitViTClassifier(
     model=vit_classifer,
     criterion=torch.nn.CrossEntropyLoss(),
-    lr = opts.lr
+    lr = float(opts.lr)
 )
 
+if opts.ckpt != "" and os.path.exists(opts.ckpt):
+    model.load_from_checkpoint(opts.ckpt)
+    
 trainer = L.Trainer(
     accelerator="gpu",
     devices=opts.num_device,
