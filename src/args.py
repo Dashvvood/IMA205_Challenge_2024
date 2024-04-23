@@ -50,7 +50,7 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    "--fast", type=bool, action="store_true", default=False,
+    "--fast", action="store_true", default=False,
 )
 
 parser.add_argument(
