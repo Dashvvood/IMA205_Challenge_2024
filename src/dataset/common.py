@@ -10,8 +10,8 @@ class BaseDatasetMixin:
         metadata: Union[str, os.PathLike, pd.DataFrame],
         img_root: Union[str, os.PathLike]
     ) -> None:
-        if  not os.path.exists(img_root):
-            raise FileNotFoundError
+        if not os.path.exists(img_root):
+            raise FileNotFoundError, f"{img_root} not found"
         
         self.metadada = metadata
         
