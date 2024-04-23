@@ -5,7 +5,7 @@ import motti
 parser = argparse.ArgumentParser()
 
 parser.add_argument(
-    "--batch_size", type=int, default=16
+    "--batch_size", type=int, default=128
 )
 parser.add_argument(
     "--device_num", type=int, default=1

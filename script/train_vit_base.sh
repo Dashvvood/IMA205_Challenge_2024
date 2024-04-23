@@ -2,8 +2,6 @@
 PROJECT_ROOT=".."
 
 python ${PROJECT_ROOT}/src/trainer/vit_base_trainer.py \
---batch_size 16 \
---device_num 1 \
 --processor_config ${PROJECT_ROOT}/config/vit_image_processor.json \
 --vit_config ${PROJECT_ROOT}/config/vit_isic2019.json \
 --metadata ${PROJECT_ROOT}/data/metadataTrain.csv \
