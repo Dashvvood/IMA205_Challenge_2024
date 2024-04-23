@@ -53,6 +53,9 @@ wandblogger = WandbLogger(
     project="isic2019",
 )
 
+if not os.path.exists(opts.ckpt_dir):
+    os.makedirs(opts.ckpt_dir, exist_ok=True)
+
 checkpoint_callback = ModelCheckpoint(
     monitor="val_accuracy", 
     dirpath=opts.ckpt_dir,
