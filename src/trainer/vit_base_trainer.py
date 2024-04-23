@@ -1,14 +1,15 @@
-from ..constant import (
-    HEIGHT,
-    WEIGHT,
-)
+import sys
+import os
 
-from ..args import opts
+parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(parent_dir)
 
+from constant import PROJECT_ROOT
+
+from args import opts
 import motti
 import json
 import logging
-import os
 
 import torch
 from torch.utils.data import DataLoader
@@ -30,7 +31,8 @@ o_d = motti.o_d()
 
 processor = ViTImageProcessor(**json.load(opts.processor_config))
 
-vit_classifer = ViTForImageClassification(**json.load(opts.vit_config))
+vit_config = ViTConfig(**json.load(opts.vit_config))
+vit_classifer = ViTForImageClassification(vit_config)
 
 dataset = ISIC2019Dataset(
     metadata=opts.metadata, 

@@ -1,7 +1,7 @@
 from os import PathLike
 import torch
 from torch.utils.data import Dataset, DataLoader 
-from .common import BaseDatasetMixin
+from common import BaseDatasetMixin
 from typing import Any
 from dataclasses import dataclass
 
