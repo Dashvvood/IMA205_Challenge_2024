@@ -13,8 +13,8 @@ import logging
 
 import torch
 from torch.utils.data import DataLoader
-from ..dataset.ISIC2019 import ISIC2019Dataset
-from ..model.ViTClassifier import LitViTClassifier
+from dataset.ISIC2019 import ISIC2019Dataset
+from model.ViTClassifier import LitViTClassifier
 
 
 from transformers import (
