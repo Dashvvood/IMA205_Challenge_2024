@@ -1,0 +1,11 @@
+transformers
+diffusers
+huggingface_hub
+torch 
+torchvision 
+torchaudio
+pandas
+wandb
+motti
+matplotlib
+lightning

@@ -1,0 +1,35 @@
+import lightning as L
+import torch
+
+class LitViTClassifier(L.LightningModule):
+    def __init__(self, model, criterion, lr) -> None:
+        super().__init__()
+        self.model =  model
+        self.criterion = criterion
+        self.loss = criterion
+        self.lr = lr
+        
+    def forward(self, inputs):
+        return self.model(inputs)
+    
+    def configure_optimizers(self):
+        return torch.optim.AdamW(self.model.parameters(), lr=self.lr)
+    
+    def training_step(self, batch, batch_idx):
+        x,y = batch.pixel_values, batch.labels
+        out = self(x)
+        loss = self.criterion(out.logits, y)
+        self.log("train/loss", loss, on_epoch=True)
+        return loss
+    
+    def validation_step(self, batch, batch_idx):
+        x,y = batch.pixel_values, batch.labels
+        out = self(x)
+        loss = self.criterion(out.logits, y)
+        
+        # calculate acc
+        labels_hat = torch.argmax(out.logits, dim=1)
+        val_acc = torch.sum(y == labels_hat).item() / (len(y) * 1.0)
+
+        self.log_dict({'val/loss': loss, 'val/acc': val_acc}, on_epoch=True)
+        
