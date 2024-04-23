@@ -1,13 +1,15 @@
 #!/bin/bash
-python ../src/trainer/vit_base_trainer.py \
+PROJECT_ROOT=".."
+
+python ${PROJECT_ROOT}/src/trainer/vit_base_trainer.py \
 --batch_size 16 \
 --device_num 1 \
---processor_config ../config/vit_image_processor.json \
---vit_config ../config/vit_isic2019.json \
---metadata ../data/metadataTrain.csv \
---ckpt_dir "../ckpt/" \
---log_dir "../log" \
---img_root "../data/Train/Train" \
+--processor_config ${PROJECT_ROOT}/config/vit_image_processor.json \
+--vit_config ${PROJECT_ROOT}/config/vit_isic2019.json \
+--metadata ${PROJECT_ROOT}/data/metadataTrain.csv \
+--ckpt_dir ${PROJECT_ROOT}/ckpt/ \
+--log_dir ${PROJECT_ROOT}/log \
+--img_root ${PROJECT_ROOT}/data/Train/Train \
 --lr 1e-3 \
 --max_epochs 1000 \
 $@

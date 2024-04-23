@@ -17,7 +17,6 @@ from torch.utils.data import DataLoader
 from dataset.ISIC2019 import ISIC2019Dataset
 from model.ViTClassifier import LitViTClassifier
 
-
 from transformers import (
     ViTImageProcessor, 
     ViTForImageClassification, 
@@ -43,8 +42,8 @@ dataset = ISIC2019Dataset(
 
 train_set, val_set = dataset.split_train_val()
 
-train_dataloader = DataLoader(dataset=train_set, batch_size=opts.batch_size)
-val_dataloader = DataLoader(dataset=val_set, batch_size=8)
+train_dataloader = DataLoader(dataset=train_set, batch_size=opts.batch_size, collate_fn=ISIC2019Dataset.collate_fn)
+val_dataloader = DataLoader(dataset=val_set, batch_size=8, collate_fn=ISIC2019Dataset.collate_fn)
 
 
 criterion = torch.nn.CrossEntropyLoss()
@@ -73,7 +72,7 @@ if opts.ckpt != "" and os.path.exists(opts.ckpt):
     
 trainer = L.Trainer(
     accelerator="gpu",
-    devices=opts.num_device,
+    devices=opts.device_num,
     fast_dev_run=opts.fast,
     max_epochs=opts.max_epochs,
     logger=wandblogger,
