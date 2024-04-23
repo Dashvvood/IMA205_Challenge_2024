@@ -8,7 +8,7 @@ python ${PROJECT_ROOT}/src/trainer/vit_base_trainer.py \
 --vit_config ${PROJECT_ROOT}/config/vit_isic2019.json \
 --metadata ${PROJECT_ROOT}/data/metadataTrain.csv \
 --ckpt_dir ${PROJECT_ROOT}/ckpt/ \
---log_dir ${PROJECT_ROOT}/log \
+--log_dir ${PROJECT_ROOT}/log/ \
 --img_root ${PROJECT_ROOT}/data/Train/Train \
 --lr 1e-3 \
 --max_epochs 1000 \
