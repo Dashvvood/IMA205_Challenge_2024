@@ -2,8 +2,7 @@ import sys
 import os
 import motti
 
-motti.append_parent_dir()
-
+motti.append_parent_dir(__file__)
 
 from constant import PROJECT_ROOT
 
@@ -31,9 +30,9 @@ from lightning.pytorch.loggers import WandbLogger
 
 o_d = motti.o_d()
 
-processor = ViTImageProcessor(**json.load(opts.processor_config))
+processor = ViTImageProcessor(**load_json(opts.processor_config))
 
-vit_config = ViTConfig(**json.load(opts.vit_config))
+vit_config = ViTConfig(**load_json(opts.vit_config))
 vit_classifer = ViTForImageClassification(vit_config)
 
 dataset = ISIC2019Dataset(
@@ -86,5 +85,3 @@ trainer.fit(
     train_dataloaders=train_dataloader, 
     val_dataloaders=val_dataloader
 )
-
-

@@ -1,8 +1,8 @@
 import sys
 import os
 import motti
-motti.append_current_dir()
-motti.append_parent_dir()
+motti.append_current_dir(__file__)
+motti.append_parent_dir(__file__)
 
 from os import PathLike
 import torch
