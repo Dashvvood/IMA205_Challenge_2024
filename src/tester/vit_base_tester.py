@@ -72,7 +72,8 @@ predictions = trainer.predict(
 )
 
 results = np.concatenate([x.numpy() for x in predictions])
-new_df = pd.DataFrame(data={"ID": dataset.df["ID"], "CLASS": results})
+L = len(results)
+new_df = pd.DataFrame(data={"ID": dataset.df["ID"][:L], "CLASS": results})
 
 breakpoint()
 
