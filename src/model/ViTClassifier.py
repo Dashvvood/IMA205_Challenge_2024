@@ -33,3 +33,9 @@ class LitViTClassifier(L.LightningModule):
 
         self.log_dict({'val_loss': loss, 'val_accuracy': val_acc}, on_epoch=True)
         
+    def predict_step(self, batch, batch_idx):
+        x =  batch.pixel_values
+        out = self(x)
+        labels_hat = torch.argmax(out.logits, dim=1)
+        return labels_hat
+    
