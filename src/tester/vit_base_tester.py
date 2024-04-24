@@ -80,7 +80,6 @@ summary = load_json("../data/Submission/summary.json")
 summary = OrderedDict() if summary is  None else OrderedDict(summary)
 summary[o_d] = opts
 
-breakpoint()
+new_df.to_csv(f"../data/Submission/{o_d}.csv", index=False)
 
-new_df.to_csv(f"../data/Submission/{o_d}.csv")
-
+logging.info("Done")
