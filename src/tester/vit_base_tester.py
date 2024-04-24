@@ -3,6 +3,7 @@ import os
 import motti
 import numpy as np
 import pandas as pd
+from collections import OrderedDict
 
 motti.append_parent_dir(__file__)
 motti.append_current_dir(__file__)
@@ -76,7 +77,7 @@ L = len(results)
 
 new_df = pd.DataFrame(data={"ID": dataset.df["ID"][:L], "CLASS": results})
 summary = load_json("../data/Submmision/summary.json")
-summary = dict() if summary is  None else summary
+summary = OrderedDict() if summary is  None else OrderedDict(summary)
 summary[o_d] = opts
 
 breakpoint()
