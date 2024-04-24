@@ -162,6 +162,17 @@ df.groupby("CLASS").size()
 
 
 
+## Log
+
+```python
+processor = ViTImageProcessor.from_pretrained('google/vit-base-patch16-224', cache_dir=HF_CACHE_DIR)
+processor.to_json_file("../config/vit_image_processor.json")
+```
+
+
+
+
+
 ---
 
 ## Reference
