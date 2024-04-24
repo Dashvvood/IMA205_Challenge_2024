@@ -23,10 +23,13 @@ class ISIC2019Batch:
     labels: torch.FloatTensor = None
     
 class ISIC2019Dataset(BaseDatasetMixin, Dataset):
-    def __init__(self, metadata: str | PathLike, img_root: str | PathLike, processor) -> None:
+    def __init__(self, metadata: str | PathLike, img_root: str | PathLike, processor, in_memory=False) -> None:
         super().__init__(metadata, img_root)
         self.processor = processor
         
+        # TODO: save all data in memory
+        if in_memory:
+            pass
     def __len__(self):
         return self.df.shape[0]
     
