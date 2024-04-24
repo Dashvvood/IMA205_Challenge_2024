@@ -34,8 +34,8 @@ class ISIC2019Dataset(BaseDatasetMixin, Dataset):
         meta = self.df.iloc[index]
         img = self._get_img_by_id(meta.ID)
         outputs = self.processor(img, return_tensors="pt")
-        # TODO: label must substract 1, because in csv we start from 1
-        label = meta.CLASS - 1 if "CLASS" in meta else None
+        # TODO: label must substract 1, because in csv we start from 1, use -1 indicating the miss of label
+        label = meta.CLASS - 1 if "CLASS" in meta else -1
         return ISIC2019Item(pixel_value=outputs["pixel_values"], label=label, meta=meta)
 
     @staticmethod
