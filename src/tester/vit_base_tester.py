@@ -42,7 +42,7 @@ dataset = ISIC2019Dataset(
     processor=processor
 )
 
-dataloader = DataLoader(dataset=dataset, batch_size=16, shuffle=False, num_workers=16)
+dataloader = DataLoader(dataset=dataset, batch_size=16, shuffle=False, num_workers=16, collate_fn=ISIC2019Dataset.collate_fn)
 
 model = LitViTClassifier(
     model=vit_classifer,
