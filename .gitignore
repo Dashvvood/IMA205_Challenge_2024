@@ -164,7 +164,7 @@ cython_debug/
 
 data/*
 !data/dummy
-!data/Submission
+!data/Submission/summary.json
 *.ipynb
 ext/
 ext
