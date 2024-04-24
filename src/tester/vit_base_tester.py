@@ -50,9 +50,11 @@ model = LitViTClassifier(
     lr = float(opts.lr)
 )
 
+
 if opts.ckpt != "" and os.path.exists(opts.ckpt):
-    model = LitViTClassifier.load_from_checkpoint(opts.ckpt)
-    
+    model = LitViTClassifier.load_from_checkpoint(opts.ckpt, model=vit_classifer, map_location=torch.device("cpu"))
+
+
 trainer = L.Trainer(
     accelerator="gpu",
     devices=opts.device_num,

@@ -70,7 +70,13 @@ model = LitViTClassifier(
 )
 
 if opts.ckpt != "" and os.path.exists(opts.ckpt):
-    model.load_from_checkpoint(opts.ckpt)
+    model = LitViTClassifier.load_from_checkpoint(
+        opts.ckpt, 
+        model=vit_classifer, 
+        criterion=torch.nn.CrossEntropyLoss(),
+        lr = float(opts.lr),
+        map_location=torch.device("cpu"),
+    )
     
 trainer = L.Trainer(
     accelerator="gpu",

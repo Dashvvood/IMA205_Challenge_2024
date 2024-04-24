@@ -2,7 +2,7 @@ import lightning as L
 import torch
 
 class LitViTClassifier(L.LightningModule):
-    def __init__(self, model, criterion, lr) -> None:
+    def __init__(self, model=None, criterion=None, lr=None) -> None:
         super().__init__()
         self.model =  model
         self.criterion = criterion
