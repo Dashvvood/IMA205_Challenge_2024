@@ -73,10 +73,13 @@ predictions = trainer.predict(
 
 results = np.concatenate([x.numpy() for x in predictions])
 L = len(results)
+
 new_df = pd.DataFrame(data={"ID": dataset.df["ID"][:L], "CLASS": results})
+summary = load_json("../data/Submmision/summary.json")
+summary = dict() if summary is  None else summary
+summary[o_d] = opts
 
 breakpoint()
 
-print(len(results))
-print(results[:10])
+new_df.to_csv(f"../data/Submission/{o_d}.csv")
 
