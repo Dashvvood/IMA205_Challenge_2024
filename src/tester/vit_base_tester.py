@@ -79,7 +79,7 @@ new_df = pd.DataFrame(data={"ID": dataset.df["ID"][:L], "CLASS": results})
 summary = load_json("../data/Submission/summary.json")
 summary = OrderedDict() if summary is  None else OrderedDict(summary)
 summary[o_d] = opts
-
+motti.dump_json(summary, "../data/Submission/summary.json")
 new_df.to_csv(f"../data/Submission/{o_d}.csv", index=False)
 
 logging.info("Done")
