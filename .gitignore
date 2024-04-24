@@ -176,3 +176,5 @@ log/*
 
 ckpt/*
 ckpt
+
+lightning_logs/
