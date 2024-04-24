@@ -1,5 +1,8 @@
 import lightning as L
 import torch
+from dataclasses import dataclass
+
+
 
 class LitViTClassifier(L.LightningModule):
     def __init__(self, model=None, criterion=None, lr=None) -> None:
@@ -38,4 +41,5 @@ class LitViTClassifier(L.LightningModule):
         out = self(x)
         labels_hat = torch.argmax(out.logits, dim=1)
         return labels_hat
+    
     

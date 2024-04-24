@@ -1,6 +1,8 @@
 import sys
 import os
 import motti
+import numpy as np
+import pandas as pd
 
 motti.append_parent_dir(__file__)
 motti.append_current_dir(__file__)
@@ -42,7 +44,7 @@ dataset = ISIC2019Dataset(
     processor=processor
 )
 
-dataloader = DataLoader(dataset=dataset, batch_size=16, shuffle=False, num_workers=16, collate_fn=ISIC2019Dataset.collate_fn)
+dataloader = DataLoader(dataset=dataset, batch_size=opts.batch_size, shuffle=False, num_workers=16, collate_fn=ISIC2019Dataset.collate_fn)
 
 model = LitViTClassifier(
     model=vit_classifer,
@@ -69,6 +71,11 @@ predictions = trainer.predict(
     dataloaders=dataloader,
 )
 
+results = np.concatenate([x.numpy() for x in predictions])
+new_df = pd.DataFrame(data={"ID": dataset.df["ID"], "CLASS": results})
+
 breakpoint()
 
-print(predictions.shape)
+print(len(results))
+print(results[:10])
+
