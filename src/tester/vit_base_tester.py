@@ -72,7 +72,7 @@ predictions = trainer.predict(
     dataloaders=dataloader,
 )
 
-results = np.concatenate([x.numpy() for x in predictions])
+results = np.concatenate([x.numpy() for x in predictions]) + 1
 L = len(results)
 
 new_df = pd.DataFrame(data={"ID": dataset.df["ID"][:L], "CLASS": results})
