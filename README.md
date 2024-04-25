@@ -158,9 +158,12 @@ df.groupby("CLASS").size()
 
 - [Self-supervised learning with self-distillation on COVID-19 medical image classification ](https://www.sciencedirect.com/science/article/abs/pii/S0169260723005424)
 - [Self-Supervised Pre-Training with Contrastive and Masked Autoencoder Methods for Dealing with Small Datasets in Deep Learning for Medical Imaging](https://arxiv.org/pdf/2308.06534.pdf)
+- [Barlow Twins: Self-Supervised Learning via Redundancy Reduction](https://arxiv.org/pdf/2103.03230.pdf)
+
+​	![image-20240424143145976](./README.assets/image-20240424143145976.png)
+
+- [To Compress or Not to Compress—Self-Supervised Learning and Information Theory: A Review](https://www.mdpi.com/1099-4300/26/3/252)
 - 
-
-
 
 ## Log
 
@@ -171,7 +174,15 @@ processor.to_json_file("../config/vit_image_processor.json")
 
 
 
+![image-20240424141737862](./README.assets/image-20240424141737862.png)
 
+
+
+![image-20240424142349528](./README.assets/image-20240424142349528.png)
+
+
+
+![image-20240424151008837](./README.assets/image-20240424151008837.png)
 
 ---
 
@@ -194,17 +205,17 @@ processor.to_json_file("../config/vit_image_processor.json")
 
 
 
+## TODO
 
-
-
-
-
-
-
-
-
-
-
+1. Data Aug
+2. Weighted Loss
+3. Barlow Twins: low data
+4. High resolution
+5. Hybrid method
+6. CDM
+7. Data Aug by Diffusion model
+8. DINO
+9. Medaugmentation
 
 
 
