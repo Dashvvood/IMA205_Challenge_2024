@@ -50,7 +50,7 @@ train_set, val_set = dataset.split_train_val()
 train_dataloader = DataLoader(dataset=train_set, batch_size=opts.batch_size, collate_fn=ISIC2019Dataset.collate_fn, num_workers=16)
 val_dataloader = DataLoader(dataset=val_set, batch_size=8, collate_fn=ISIC2019Dataset.collate_fn, num_workers=16)
 
-criterion = torch.nn.CrossEntropyLoss()
+# criterion = torch.nn.CrossEntropyLoss()
 
 criterion = LMFLoss(cls_num_list=CLS_NUM_LIST, weight=CLS_WEIGHT)
 
