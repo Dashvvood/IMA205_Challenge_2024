@@ -2,7 +2,7 @@ import sys
 import os
 import motti
 from motti import load_json
-
+thisfile = os.path.basename(__file__).split(".")[0]
 motti.append_parent_dir(__file__)
 
 from constant import PROJECT_ROOT, CLS_NUM_LIST
@@ -24,7 +24,8 @@ from transformers import (
     ConvNextForImageClassification
 )
 
-from model.ViTClassifier import LitViTClassifier
+from model.ConvNeXtClassifier import LitConvNeXtClassifier
+
 from losses import LMFLoss
 
 import lightning as L
@@ -53,7 +54,7 @@ criterion = torch.nn.CrossEntropyLoss()
 # criterion = LMFLoss(cls_num_list=CLS_NUM_LIST)
 
 wandblogger = WandbLogger(
-    name=o_d + "_convnext_s", 
+    name=f"{o_d}_{thisfile}_{opts.commit}", 
     save_dir=opts.log_dir, 
     project="isic2019",
 )
@@ -67,7 +68,7 @@ checkpoint_callback = ModelCheckpoint(
 )
 
 if opts.ckpt != "" and os.path.exists(opts.ckpt):
-    model = LitViTClassifier.load_from_checkpoint(
+    model = LitConvNeXtClassifier.load_from_checkpoint(
         opts.ckpt, 
         model=convnext,
         criterion=torch.nn.CrossEntropyLoss(),
@@ -75,7 +76,7 @@ if opts.ckpt != "" and os.path.exists(opts.ckpt):
         map_location=torch.device("cpu"),
     )
 else:
-    model = LitViTClassifier(
+    model = LitConvNeXtClassifier(
         model=convnext,
         criterion=torch.nn.CrossEntropyLoss(),
         lr = float(opts.lr)

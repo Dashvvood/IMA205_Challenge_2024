@@ -63,6 +63,10 @@ parser.add_argument(
     "--model_config", type=str, default=""
 )
 
+parser.add_argument(
+    "--commit", type=str, default="nocomment"
+)
+
 opts, missing = parser.parse_known_args()
 
 print(f"{opts = }")
