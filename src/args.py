@@ -59,6 +59,10 @@ parser.add_argument(
     "--accumulate_grad_batches", type=int, default=1
 )
 
+parser.add_argument(
+    "--model_config", type=str, default=""
+)
+
 opts, missing = parser.parse_known_args()
 
 print(f"{opts = }")

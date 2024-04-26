@@ -9,3 +9,5 @@ wandb
 motti
 matplotlib
 lightning
+albumentations
+opencv-python

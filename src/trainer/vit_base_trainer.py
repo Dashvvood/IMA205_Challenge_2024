@@ -7,10 +7,9 @@ motti.append_parent_dir(__file__)
 from constant import PROJECT_ROOT
 
 from args import opts
-if not os.path.exists(opts.ckpt_dir):
-    os.makedirs(opts.ckpt_dir, exist_ok=True)
-if not os.path.exists(opts.log_dir):
-    os.makedirs(opts.log_dir, exist_ok=True)
+
+os.makedirs(opts.ckpt_dir, exist_ok=True)
+os.makedirs(opts.log_dir, exist_ok=True)
     
 from motti import load_json
 import logging

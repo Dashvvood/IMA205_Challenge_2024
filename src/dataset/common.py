@@ -24,6 +24,9 @@ class BaseDatasetMixin:
         
         self.img_root = img_root
         
+    def __len__(self):
+        return len(self.df)
+        
     def _get_img_by_id(self, ID: str) -> Image.Image:
         path = os.path.join(self.img_root, ID+".jpg")
         img = Image.open(path)
@@ -39,4 +42,9 @@ class BaseDatasetMixin:
         img = self._get_img_by_id(sample.ID)
         return img
     
+    def _get_path_by_id(self, ID: str) -> Union[str, os.PathLike]:
+        return os.path.join(self.img_root, ID+".jpg")
     
+    def _get_path_by_index(self, index:int) -> Union[str, os.PathLike]:
+        meta = self.df.iloc[index]
+        return os.path.join(self.img_root, meta.ID+".jpg")

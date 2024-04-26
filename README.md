@@ -163,6 +163,7 @@ df.groupby("CLASS").size()
 ​	![image-20240424143145976](./README.assets/image-20240424143145976.png)
 
 - [To Compress or Not to Compress—Self-Supervised Learning and Information Theory: A Review](https://www.mdpi.com/1099-4300/26/3/252)
+- [Understanding the Tricks of Deep Learning in Medical Image Segmentation: Challenges and Future Directions](https://arxiv.org/pdf/2209.10307)
 - 
 
 ## Log
@@ -183,6 +184,63 @@ processor.to_json_file("../config/vit_image_processor.json")
 
 
 ![image-20240424151008837](./README.assets/image-20240424151008837.png)
+
+**MedAugment :**
+
+![image-20240426081806191](./README.assets/image-20240426081806191.png)
+
+
+
+
+
+- https://challenge.isic-archive.com/leaderboards/2019/
+
+
+
+## ISIC2019 -- mean and std
+
+```python
+mean = [0.66245475 0.52485867 0.51958871]
+std = [0.22281982 0.20272245 0.21414118]
+```
+
+
+
+![image-20240426144703158](./README.assets/image-20240426144703158.png)
+
+
+
+<img src="./README.assets/image-20240426161658820.png" alt="image-20240426161658820" style="zoom:50%;" />
+
+
+
+**PIL IMAGE**
+
+```python
+# transforms (also defined in Imaging.h)
+class Transform(IntEnum):
+    AFFINE = 0
+    EXTENT = 1
+    PERSPECTIVE = 2
+    QUAD = 3
+    MESH = 4
+
+
+# resampling filters (also defined in Imaging.h)
+class Resampling(IntEnum):
+    NEAREST = 0
+    BOX = 4
+    BILINEAR = 2
+    HAMMING = 5
+    BICUBIC = 3
+    LANCZOS = 1
+```
+
+
+
+
+
+
 
 ---
 
@@ -216,6 +274,9 @@ processor.to_json_file("../config/vit_image_processor.json")
 7. Data Aug by Diffusion model
 8. DINO
 9. Medaugmentation
+10. Data Clean
+
+
 
 
 
