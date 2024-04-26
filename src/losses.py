@@ -13,7 +13,7 @@ import numpy as np
 
 class FocalLoss(nn.Module):
     
-    def __init__(self, alpha, gamma=2):
+    def __init__(self, alpha, gamma=1.5):
         super().__init__()
         self.alpha = alpha
         self.gamma = gamma

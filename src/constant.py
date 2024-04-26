@@ -55,7 +55,11 @@ CLS_NUM_LIST = [
     471, # 8 Squamous cell carcinoma 471   
 ]
 
+inverse_sum = sum(1/x for x in CLS_NUM_LIST)
+
+CLS_WEIGHT = [1/(x*inverse_sum) for x in CLS_NUM_LIST]
+
 WEIGHT = 512
 HEIGHT = 512
-
+IMAGE_SIZE = 512
 HF_CACHE_DIR = "/media/lupin/svp/lab/cache/hf/"

@@ -5,7 +5,7 @@ from motti import load_json
 thisfile = os.path.basename(__file__).split(".")[0]
 motti.append_parent_dir(__file__)
 
-from constant import PROJECT_ROOT, CLS_NUM_LIST
+from constant import PROJECT_ROOT, CLS_NUM_LIST, CLS_WEIGHT
 from args import opts
 
 os.makedirs(opts.ckpt_dir, exist_ok=True)
@@ -16,7 +16,7 @@ import torch
 from torch.utils.data import DataLoader
 from dataset.ISIC2019 import ISIC2019Dataset
 
-
+import numpy as np
 
 from transformers import (
     ConvNextConfig,
@@ -51,7 +51,8 @@ train_dataloader = DataLoader(dataset=train_set, batch_size=opts.batch_size, col
 val_dataloader = DataLoader(dataset=val_set, batch_size=8, collate_fn=ISIC2019Dataset.collate_fn, num_workers=16)
 
 criterion = torch.nn.CrossEntropyLoss()
-# criterion = LMFLoss(cls_num_list=CLS_NUM_LIST)
+
+criterion = LMFLoss(cls_num_list=CLS_NUM_LIST, weight=CLS_WEIGHT)
 
 wandblogger = WandbLogger(
     name=f"{o_d}_{thisfile}_{opts.commit}", 
@@ -60,7 +61,7 @@ wandblogger = WandbLogger(
 )
 
 checkpoint_callback = ModelCheckpoint(
-    monitor="val_accuracy", 
+    monitor="val_loss", 
     dirpath=os.path.join(opts.ckpt_dir, o_d),
     save_last=True,
     save_top_k=1,
