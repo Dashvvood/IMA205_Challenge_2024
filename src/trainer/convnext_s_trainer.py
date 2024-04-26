@@ -5,7 +5,7 @@ from motti import load_json
 
 motti.append_parent_dir(__file__)
 
-from constant import PROJECT_ROOT
+from constant import PROJECT_ROOT, CLS_NUM_LIST
 from args import opts
 
 os.makedirs(opts.ckpt_dir, exist_ok=True)
@@ -49,7 +49,8 @@ train_set, val_set = dataset.split_train_val()
 train_dataloader = DataLoader(dataset=train_set, batch_size=opts.batch_size, collate_fn=ISIC2019Dataset.collate_fn, num_workers=16)
 val_dataloader = DataLoader(dataset=val_set, batch_size=8, collate_fn=ISIC2019Dataset.collate_fn, num_workers=16)
 
-criterion = torch.nn.CrossEntropyLoss()
+# criterion = torch.nn.CrossEntropyLoss()
+criterion = LMFLoss(cls_num_list=CLS_NUM_LIST)
 
 wandblogger = WandbLogger(
     name=o_d + "_convnext_s", 

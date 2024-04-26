@@ -44,6 +44,17 @@ INDEX2WEIGHT = OrderedDict({
     8: 5.04219745,
 })
 
+CLS_NUM_LIST = [
+    3391, # 1 Melanoma 3391
+    9657, # 2 Melanocytic nevus 9657
+    2492, # 3 Basal cell carcinoma 2492
+    650, # 4 Actinic keratosis 650
+    1968, # 5 Benign keratosis 1968
+    179, # 6 Dermatofibroma 179
+    190, # 7 Vascular lesion 190
+    471, # 8 Squamous cell carcinoma 471   
+]
+
 WEIGHT = 512
 HEIGHT = 512
 
