@@ -90,7 +90,7 @@ trainer = L.Trainer(
     max_epochs=opts.max_epochs,
     logger=wandblogger,
     accumulate_grad_batches=opts.accumulate_grad_batches,
-    log_every_n_steps=50,
+    log_every_n_steps=10,
     callbacks=[checkpoint_callback],
 )
 
