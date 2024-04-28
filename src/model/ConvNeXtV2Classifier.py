@@ -1,11 +1,13 @@
 import lightning as L
 import torch
 from dataclasses import dataclass
-import pytorch_warmup as warmup
-from transformers import get_cosine_schedule_with_warmup
 
 
-class LitConvNeXtClassifier(L.LightningModule):
+def get_lightning_model(submodel_config, processor_config, loss_fn):
+    pass
+    
+
+class LitConvNeXtV2Classifier(L.LightningModule):
     def __init__(self, model=None, criterion=None, lr=None) -> None:
         super().__init__()
         self.model =  model
@@ -21,18 +23,8 @@ class LitConvNeXtClassifier(L.LightningModule):
             lr=self.lr, betas=[0.9, 0.999], 
             weight_decay=0.05,
         )
-        scheduler = get_cosine_schedule_with_warmup(
-            optimizer=optimizer,
-            num_warmup_steps=3000,
-            num_training_steps=2e5,
-        )
-        
-        return {
-            "optimizer": optimizer,
-            "lr_scheduler": {
-                "scheduler": scheduler,
-            }
-        }
+        schedulaer = torch.optim.lr_scheduler.CosineAnnealingLR
+        return 
     
     def training_step(self, batch, batch_idx):
         x,y = batch.pixel_values, batch.labels

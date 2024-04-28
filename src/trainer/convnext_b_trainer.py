@@ -52,7 +52,7 @@ val_dataloader = DataLoader(dataset=val_set, batch_size=8, collate_fn=ISIC2019Da
 
 # criterion = torch.nn.CrossEntropyLoss()
 
-criterion = LMFLoss(cls_num_list=CLS_NUM_LIST, weight=CLS_WEIGHT)
+criterion = LMFLoss(cls_num_list=CLS_NUM_LIST, weight=CLS_WEIGHT, gamma=1.5)
 
 wandblogger = WandbLogger(
     name=f"{o_d}_{thisfile}_{opts.commit}", 
@@ -64,7 +64,7 @@ checkpoint_callback = ModelCheckpoint(
     monitor="val_loss", 
     dirpath=os.path.join(opts.ckpt_dir, o_d),
     save_last=True,
-    save_top_k=1,
+    save_top_k=3,
     mode="min",
 )
 
@@ -90,7 +90,7 @@ trainer = L.Trainer(
     max_epochs=opts.max_epochs,
     logger=wandblogger,
     accumulate_grad_batches=opts.accumulate_grad_batches,
-    log_every_n_steps=10,
+    log_every_n_steps=50,
     callbacks=[checkpoint_callback],
 )
 

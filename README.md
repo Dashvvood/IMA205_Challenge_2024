@@ -204,8 +204,6 @@ mean = [0.66245475 0.52485867 0.51958871]
 std = [0.22281982 0.20272245 0.21414118]
 ```
 
-
-
 ![image-20240426144703158](./README.assets/image-20240426144703158.png)
 
 
@@ -238,7 +236,7 @@ class Resampling(IntEnum):
 
 
 
-
+![Screenshot from 2024-04-28 19-08-03](../../../Pictures/Screenshots/Screenshot from 2024-04-28 19-08-03.png)
 
 
 
