@@ -1,7 +1,6 @@
 import lightning as L
 import torch
 from dataclasses import dataclass
-import pytorch_warmup as warmup
 from transformers import get_cosine_schedule_with_warmup
 
 
