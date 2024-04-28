@@ -7,5 +7,5 @@ python ${PROJECT_ROOT}/src/tester/convnext_tester.py \
 --metadata ${PROJECT_ROOT}/data/ISIC2019/metadataTest.csv \
 --ckpt_dir ${PROJECT_ROOT}/ckpt/ \
 --log_dir ${PROJECT_ROOT}/log/ \
---img_root ${PROJECT_ROOT}/data/Test/Test \
+--img_root ${PROJECT_ROOT}/data/ISIC2019/Test/Test \
 $@
