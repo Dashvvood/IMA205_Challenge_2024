@@ -22,7 +22,7 @@ class LitConvNeXtClassifier(L.LightningModule):
         )
         scheduler = get_cosine_schedule_with_warmup(
             optimizer=optimizer,
-            num_warmup_steps=3000,
+            num_warmup_steps=2000,
             num_training_steps=2e5,
         )
         
